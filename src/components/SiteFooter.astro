@@ -1,0 +1,79 @@
+---
+import { site } from '../data/site';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="site-footer__inner container-site">
+    <div class="site-footer__brand">
+      <p class="site-footer__name">{site.name}</p>
+      <p class="site-footer__role">{site.role}</p>
+    </div>
+
+    <div class="site-footer__links">
+      <a href={`mailto:${site.email}`}>{site.email}</a>
+      <a href={site.social.github} rel="noopener noreferrer" target="_blank">GitHub</a>
+      <a href={site.social.linkedin} rel="noopener noreferrer" target="_blank">LinkedIn</a>
+    </div>
+
+    <p class="site-footer__copy label-mono">© {year} {site.name}</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--color-border);
+    padding-block: var(--space-8);
+    margin-top: var(--space-10);
+  }
+
+  .site-footer__inner {
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  .site-footer__name {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--color-text-primary);
+  }
+
+  .site-footer__role {
+    margin: var(--space-2) 0 0;
+    color: var(--color-text-muted);
+    font-size: var(--text-small);
+  }
+
+  .site-footer__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-5);
+  }
+
+  .site-footer__links a {
+    color: var(--color-text-secondary);
+    font-size: var(--text-small);
+    transition: color var(--duration-fast) var(--ease-out);
+  }
+
+  .site-footer__links a:hover {
+    color: var(--color-text-primary);
+  }
+
+  .site-footer__copy {
+    margin: 0;
+  }
+
+  @media (min-width: 768px) {
+    .site-footer__inner {
+      grid-template-columns: 1fr auto;
+      align-items: end;
+    }
+
+    .site-footer__copy {
+      grid-column: 1 / -1;
+    }
+  }
+</style>

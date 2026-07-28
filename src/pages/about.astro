@@ -1,0 +1,155 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+---
+
+<BaseLayout
+  title={`About — ${site.name}`}
+  description="Data Science student at Stellenbosch University exploring statistical computing, machine learning, and applied research."
+>
+  <section class="about container-site">
+    <header class="about__header">
+      <p class="label-mono">About</p>
+      <h1 class="about__title">{site.name}</h1>
+      <p class="about__lede">
+        Data Science student at Stellenbosch University. Building toward a career as a data
+        scientist or machine learning engineer — serious about methods, systems, and clear
+        explanation.
+      </p>
+    </header>
+
+    <div class="about__grid">
+      <div class="about__portrait">
+        <div class="about__frame">
+          <img
+            class="img-mono"
+            src="/images/hero-portrait.jpg"
+            alt="Tiaan Viviers in a suit at a chessboard"
+            loading="eager"
+            decoding="async"
+          />
+        </div>
+      </div>
+
+      <div class="about__copy">
+        <h2>Positioning</h2>
+        <p>
+          I work where statistics meets software: online inference, probabilistic algorithms, and
+          machine learning systems that have to remain interpretable under constraint.
+        </p>
+        <p>
+          Outside the screen I look for the same qualities the work demands — patience, attention,
+          and a willingness to stay with difficult terrain. Astronomy, hiking, and long outdoor days
+          are part of how I reset and think.
+        </p>
+
+        <h2>Currently</h2>
+        <ul>
+          <li>Studying Data Science at Stellenbosch University</li>
+          <li>Building projects in changepoint detection, particle filters, and ensemble inference</li>
+          <li>Open to internships, research placements, and bursary programmes</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .about {
+    padding-block: var(--space-4) var(--space-6);
+  }
+
+  .about__header {
+    max-width: 36rem;
+    margin-bottom: var(--space-5);
+  }
+
+  .about__header .label-mono {
+    margin-bottom: var(--space-2);
+  }
+
+  .about__title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(1.85rem, 3vw, 2.5rem);
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  .about__lede {
+    margin: var(--space-3) 0 0;
+    color: var(--color-text-secondary);
+    font-size: var(--text-small);
+    line-height: 1.65;
+  }
+
+  .about__grid {
+    display: grid;
+    gap: var(--space-5);
+    align-items: start;
+  }
+
+  .about__frame {
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+    aspect-ratio: 4 / 5;
+    max-height: 340px;
+    background: var(--color-surface);
+  }
+
+  .about__frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 18%;
+  }
+
+  .about__copy {
+    display: grid;
+    gap: var(--space-3);
+    align-content: start;
+  }
+
+  .about__copy h2 {
+    margin: var(--space-2) 0 0;
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+
+  .about__copy p,
+  .about__copy li {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--text-small);
+    line-height: 1.65;
+  }
+
+  .about__copy ul {
+    margin: 0;
+    padding-left: 1.05rem;
+    display: grid;
+    gap: var(--space-1);
+  }
+
+  @media (min-width: 800px) {
+    .about__grid {
+      grid-template-columns: minmax(180px, 240px) minmax(0, 1fr);
+      gap: var(--space-7);
+    }
+
+    .about__frame {
+      max-height: none;
+    }
+  }
+</style>
+
+<style is:global>
+  body:has(.about) .site-footer {
+    margin-top: 0;
+    padding-block: var(--space-5);
+  }
+</style>

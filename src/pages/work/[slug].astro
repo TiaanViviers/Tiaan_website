@@ -1,0 +1,143 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TextLink from '../../components/TextLink.astro';
+import { site } from '../../data/site';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+const { title, summary, year, category, technologies, links } = project.data;
+---
+
+<BaseLayout title={`${title} — ${site.name}`} description={summary}>
+  <article class="case-study">
+    <header class="case-study__header container-site">
+      <p class="label-mono">{category}  /  {year}</p>
+      <h1 class="case-study__title">{title}</h1>
+      <p class="case-study__summary">{summary}</p>
+      {
+        technologies.length > 0 && (
+          <p class="case-study__themes">{technologies.join('  /  ')}</p>
+        )
+      }
+      {
+        links && (links.repository || links.report || links.demo) && (
+          <div class="case-study__links">
+            {links.repository && (
+              <a href={links.repository} rel="noopener noreferrer" target="_blank">
+                Repository
+              </a>
+            )}
+            {links.report && <a href={links.report}>Report</a>}
+            {links.demo && <a href={links.demo}>Demo</a>}
+          </div>
+        )
+      }
+    </header>
+
+    <div class="case-study__body container-site">
+      <div class="prose-narrow case-study__prose">
+        <Content />
+      </div>
+    </div>
+
+    <div class="case-study__back container-site">
+      <TextLink href="/work">Back to work</TextLink>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .case-study {
+    padding-block: var(--space-7) var(--space-9);
+  }
+
+  .case-study__header {
+    max-width: 42rem;
+    display: grid;
+    gap: var(--space-3);
+    margin-bottom: var(--space-8);
+  }
+
+  .case-study__title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3.5vw, 2.75rem);
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  .case-study__summary {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--text-body);
+    line-height: 1.7;
+    max-width: 42rem;
+  }
+
+  .case-study__themes {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    color: var(--color-text-muted);
+  }
+
+  .case-study__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-5);
+    margin-top: var(--space-2);
+  }
+
+  .case-study__links a {
+    color: var(--color-text-primary);
+    font-size: var(--text-small);
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 0.1rem;
+    transition: border-color var(--duration-fast) var(--ease-out);
+  }
+
+  .case-study__links a:hover {
+    border-bottom-color: var(--color-text-primary);
+  }
+
+  .case-study__prose :global(h2) {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    margin-top: var(--space-7);
+    margin-bottom: var(--space-3);
+    line-height: 1.2;
+  }
+
+  .case-study__prose :global(p),
+  .case-study__prose :global(ul),
+  .case-study__prose :global(ol) {
+    margin-bottom: var(--space-4);
+    color: var(--color-text-secondary);
+    font-size: var(--text-small);
+    line-height: 1.7;
+  }
+
+  .case-study__prose :global(li) {
+    margin-bottom: var(--space-2);
+  }
+
+  .case-study__prose :global(strong) {
+    color: var(--color-text-primary);
+    font-weight: 500;
+  }
+
+  .case-study__back {
+    margin-top: var(--space-8);
+  }
+</style>

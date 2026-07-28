@@ -1,0 +1,193 @@
+---
+import { site } from '../data/site';
+
+const pathname = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <div class="site-header__inner container-site">
+    <a class="site-header__brand" href="/">{site.name}</a>
+
+    <nav class="site-header__nav" aria-label="Primary">
+      <ul class="site-header__list">
+        {
+          site.nav.map((item) => {
+            const isActive =
+              item.href === '/'
+                ? pathname === '/'
+                : pathname === item.href || pathname.startsWith(`${item.href}/`);
+            return (
+              <li>
+                <a
+                  class:list={['site-header__link', { 'is-active': isActive }]}
+                  href={item.href}
+                  aria-current={isActive ? 'page' : undefined}
+                >
+                  {item.label}
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </nav>
+
+    <button
+      class="site-header__menu"
+      type="button"
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+      data-menu-toggle
+    >
+      <span class="label-mono">Menu</span>
+      <span class="site-header__menu-icon" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <div class="site-header__drawer" id="mobile-nav" hidden data-menu-drawer>
+    <nav aria-label="Mobile">
+      <ul>
+        {
+          site.nav.map((item) => (
+            <li>
+              <a href={item.href}>
+                <span class="label-mono">{item.number}</span>
+                <span>{item.label}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.querySelector('[data-menu-toggle]');
+  const drawer = document.querySelector('[data-menu-drawer]');
+  if (toggle instanceof HTMLButtonElement && drawer instanceof HTMLElement) {
+    toggle.addEventListener('click', () => {
+      const open = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!open));
+      drawer.hidden = open;
+    });
+  }
+</script>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: color-mix(in srgb, var(--color-bg) 86%, transparent);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .site-header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 64px;
+    gap: var(--space-5);
+  }
+
+  .site-header__brand {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    color: var(--color-text-primary);
+    letter-spacing: -0.02em;
+  }
+
+  .site-header__list {
+    display: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: var(--space-6);
+  }
+
+  .site-header__link {
+    position: relative;
+    font-size: var(--text-small);
+    color: var(--color-text-secondary);
+    transition: color var(--duration-fast) var(--ease-out);
+  }
+
+  .site-header__link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -0.35rem;
+    width: 0;
+    height: 1px;
+    background: var(--color-text-primary);
+    transition: width var(--duration-base) var(--ease-out);
+  }
+
+  .site-header__link:hover,
+  .site-header__link.is-active {
+    color: var(--color-text-primary);
+  }
+
+  .site-header__link:hover::after,
+  .site-header__link.is-active::after {
+    width: 100%;
+  }
+
+  .site-header__menu {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    min-height: 44px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--color-text-primary);
+    cursor: pointer;
+  }
+
+  .site-header__menu-icon {
+    width: 18px;
+    height: 1px;
+    background: currentColor;
+    box-shadow:
+      0 -5px 0 currentColor,
+      0 5px 0 currentColor;
+  }
+
+  .site-header__drawer {
+    border-top: 1px solid var(--color-border);
+    background: var(--color-bg);
+    padding: var(--space-5) var(--container-gutter) var(--space-6);
+  }
+
+  .site-header__drawer ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .site-header__drawer a {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    min-height: 48px;
+    color: var(--color-text-primary);
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+  }
+
+  @media (min-width: 900px) {
+    .site-header__list {
+      display: flex;
+    }
+
+    .site-header__menu,
+    .site-header__drawer {
+      display: none !important;
+    }
+  }
+</style>

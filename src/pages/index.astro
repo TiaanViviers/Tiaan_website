@@ -1,0 +1,109 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroCinematic from '../components/HeroCinematic.astro';
+import IdentityPanel from '../components/IdentityPanel.astro';
+
+const identities = [
+  {
+    eyebrow: '01 / Curiosity',
+    title: 'I am curious.',
+    body: 'Curiosity is how I decide which problems deserve rigour. I follow questions into astronomy, statistics, and systems that only make sense once you stay with them long enough.',
+    image: '/images/atmosphere/astronomy.png',
+    imageAlt: 'Night sky and astronomy equipment under stars',
+    imagePosition: '50% 38%',
+    reverse: false,
+  },
+  {
+    eyebrow: '02 / Risk',
+    title: 'I take calculated risks.',
+    body: 'Progress asks for leaps, not guesses. I care about quantifying uncertainty, naming the downside, and still choosing the move when the expected value is clear.',
+    image: '/images/atmosphere/cliff-jump.png',
+    imageAlt: 'Person jumping across a mountain gap',
+    imagePosition: '50% 28%',
+    reverse: true,
+  },
+  {
+    eyebrow: '03 / Grit',
+    title: 'I stay with the work.',
+    body: 'Dedication is the quiet half of ambition. Hard problems rarely yield on the first pass — perseverance is how models become tools, and tools become systems.',
+    image: '/images/atmosphere/mountain-explore.png',
+    imageAlt: 'Hiker walking a misty mountain path',
+    imagePosition: '50% 42%',
+    reverse: false,
+  },
+];
+---
+
+<BaseLayout>
+  <div class="home">
+    <HeroCinematic />
+
+    <section class="identity-intro container-site" aria-label="Identity">
+      <p class="identity-intro__text">I am…</p>
+    </section>
+
+    <div class="identity-sequence container-site">
+      {
+        identities.map((item) => (
+          <IdentityPanel
+            eyebrow={item.eyebrow}
+            title={item.title}
+            body={item.body}
+            image={item.image}
+            imageAlt={item.imageAlt}
+            imagePosition={item.imagePosition}
+            reverse={item.reverse}
+          />
+        ))
+      }
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  const panels = document.querySelectorAll('[data-identity-panel]');
+
+  const reveal = (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  };
+
+  if ('IntersectionObserver' in window && panels.length) {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) {
+      panels.forEach((panel) => panel.classList.add('is-visible'));
+    } else {
+      const observer = new IntersectionObserver(reveal, {
+        rootMargin: '0px 0px -12% 0px',
+        threshold: 0.22,
+      });
+      panels.forEach((panel) => observer.observe(panel));
+    }
+  } else {
+    panels.forEach((panel) => panel.classList.add('is-visible'));
+  }
+</script>
+
+<style>
+  .identity-intro {
+    padding-block: clamp(3.5rem, 8vh, 6rem) clamp(1rem, 3vh, 2rem);
+  }
+
+  .identity-intro__text {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: var(--color-text-primary);
+  }
+
+  .identity-sequence {
+    padding-bottom: var(--space-8);
+  }
+</style>

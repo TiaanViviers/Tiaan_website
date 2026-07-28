@@ -1,0 +1,127 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+---
+
+<BaseLayout
+  title={`Contact — ${site.name}`}
+  description="Open to research opportunities, internships, bursary programmes, and conversations about data and machine learning."
+>
+  <section class="contact container-site">
+    <p class="label-mono">Contact</p>
+    <h1 class="contact__title">Open to opportunity</h1>
+    <p class="contact__copy">
+      I am looking for research opportunities, internships, bursary programmes, and conversations
+      with teams building serious data and machine learning systems.
+    </p>
+
+    <dl class="contact__list">
+      <div class="contact__item">
+        <dt>Email</dt>
+        <dd>
+          <a href={`mailto:${site.email}`}>{site.email}</a>
+        </dd>
+      </div>
+      <div class="contact__item">
+        <dt>GitHub</dt>
+        <dd>
+          <a href={site.social.github} rel="noopener noreferrer" target="_blank">
+            github.com/TiaanViviers
+          </a>
+        </dd>
+      </div>
+      <div class="contact__item">
+        <dt>LinkedIn</dt>
+        <dd>
+          <a href={site.social.linkedin} rel="noopener noreferrer" target="_blank">
+            Tiaan Viviers
+          </a>
+        </dd>
+      </div>
+    </dl>
+  </section>
+</BaseLayout>
+
+<style>
+  .contact {
+    padding-block: var(--space-4) var(--space-6);
+    max-width: 40rem;
+  }
+
+  .contact .label-mono {
+    margin-bottom: var(--space-2);
+  }
+
+  .contact__title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(1.85rem, 3.2vw, 2.5rem);
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  .contact__copy {
+    margin: var(--space-3) 0 var(--space-5);
+    color: var(--color-text-secondary);
+    font-size: var(--text-body);
+    line-height: 1.7;
+    max-width: 42ch;
+  }
+
+  .contact__list {
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .contact__item {
+    display: grid;
+    gap: var(--space-2);
+    padding-block: var(--space-3);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .contact__item dt {
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+
+  .contact__item dd {
+    margin: 0;
+  }
+
+  .contact__item a {
+    color: var(--color-text-primary);
+    font-size: var(--text-body);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition:
+      border-color var(--duration-fast) var(--ease-out),
+      color var(--duration-fast) var(--ease-out);
+  }
+
+  .contact__item a:hover {
+    border-bottom-color: var(--color-border-strong);
+  }
+
+  @media (min-width: 640px) {
+    .contact__item {
+      grid-template-columns: 7rem minmax(0, 1fr);
+      align-items: baseline;
+      gap: var(--space-5);
+    }
+  }
+</style>
+
+<style is:global>
+  body:has(.contact) .site-footer {
+    margin-top: 0;
+    padding-block: var(--space-5);
+  }
+</style>

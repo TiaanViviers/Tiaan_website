@@ -1,0 +1,107 @@
+---
+interface Props {
+  number?: string;
+  category: string;
+  title: string;
+  summary: string;
+  technologies?: string[];
+  href: string;
+}
+
+const { number, category, title, summary, technologies = [], href } = Astro.props;
+---
+
+<article class="project-card reveal">
+  <a class="project-card__link" href={href}>
+    <div class="project-card__meta">
+      {number && <span class="label-mono">{number}</span>}
+      <span class="label-mono">{category}</span>
+    </div>
+    <div class="project-card__main">
+      <h3 class="project-card__title">{title}</h3>
+      <p class="project-card__summary">{summary}</p>
+      {
+        technologies.length > 0 && (
+          <p class="project-card__themes">
+            {technologies.slice(0, 4).join('  /  ')}
+          </p>
+        )
+      }
+    </div>
+  </a>
+</article>
+
+<style>
+  .project-card {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .project-card:last-child {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .project-card__link {
+    display: grid;
+    gap: var(--space-3);
+    padding-block: var(--space-5);
+    transition: background var(--duration-base) var(--ease-out);
+  }
+
+  .project-card__link:hover {
+    background: color-mix(in srgb, var(--color-surface) 80%, transparent);
+  }
+
+  .project-card__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+
+  .project-card__main {
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .project-card__title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 2.2vw, 1.85rem);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--color-text-primary);
+  }
+
+  .project-card__summary {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--text-small);
+    line-height: 1.65;
+    max-width: 62ch;
+  }
+
+  .project-card__themes {
+    margin: var(--space-1) 0 0;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+  }
+
+  @media (min-width: 768px) {
+    .project-card__link {
+      grid-template-columns: 9.5rem minmax(0, 1fr);
+      gap: var(--space-7);
+      align-items: start;
+      padding-block: var(--space-6);
+      padding-inline: var(--space-2);
+    }
+
+    .project-card__meta {
+      flex-direction: column;
+      gap: var(--space-2);
+      padding-top: 0.35rem;
+    }
+  }
+</style>

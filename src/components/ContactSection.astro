@@ -1,0 +1,56 @@
+---
+import { site } from '../data/site';
+import PrimaryButton from './PrimaryButton.astro';
+import SecondaryButton from './SecondaryButton.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Open to opportunity',
+  description = 'I am looking for research opportunities, internships, bursary programmes, and conversations with teams building serious data and machine learning systems.',
+} = Astro.props;
+---
+
+<section class="contact-section" id="contact" aria-labelledby="contact-heading">
+  <div class="contact-section__inner container-site reveal">
+    <p class="label-mono">Contact</p>
+    <h2 id="contact-heading" class="text-heading-1">{title}</h2>
+    <p class="contact-section__copy">{description}</p>
+    <div class="contact-section__actions">
+      <PrimaryButton href={`mailto:${site.email}`}>Email me</PrimaryButton>
+      <SecondaryButton href={site.social.github} external>GitHub</SecondaryButton>
+      <SecondaryButton href={site.social.linkedin} external>LinkedIn</SecondaryButton>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-section {
+    padding-block: var(--space-10);
+  }
+
+  .contact-section__inner {
+    max-width: 44rem;
+  }
+
+  .contact-section__inner .label-mono {
+    margin-bottom: var(--space-4);
+  }
+
+  .contact-section__copy {
+    margin: var(--space-5) 0 var(--space-7);
+    color: var(--color-text-secondary);
+    font-size: var(--text-body-lg);
+    line-height: 1.7;
+    max-width: 42ch;
+  }
+
+  .contact-section__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+</style>

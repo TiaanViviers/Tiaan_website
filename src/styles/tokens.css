@@ -1,0 +1,57 @@
+:root {
+  /* Colour */
+  --color-bg: #0b0b0c;
+  --color-surface: #151515;
+  --color-surface-raised: #1f1f1f;
+  --color-surface-soft: #2a2a2a;
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-border-strong: rgba(255, 255, 255, 0.18);
+  --color-text-primary: #f2f2f2;
+  --color-text-secondary: #a6a6a6;
+  --color-text-muted: #747474;
+  --color-overlay: rgba(0, 0, 0, 0.58);
+  --color-overlay-strong: rgba(0, 0, 0, 0.76);
+
+  /* Typography */
+  --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-body: Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'SFMono-Regular', Menlo, monospace;
+
+  --text-display-xl: clamp(4.5rem, 8vw, 7.5rem);
+  --text-display-lg: clamp(3.25rem, 6vw, 5.5rem);
+  --text-heading-1: clamp(2.75rem, 5vw, 4.5rem);
+  --text-heading-2: clamp(2rem, 3.5vw, 3.25rem);
+  --text-heading-3: clamp(1.5rem, 2.5vw, 2.25rem);
+  --text-body-lg: 1.125rem;
+  --text-body: 1rem;
+  --text-small: 0.875rem;
+  --text-label: 0.75rem;
+
+  /* Layout */
+  --container-max: 1240px;
+  --container-gutter: clamp(20px, 4vw, 56px);
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 72px;
+  --space-9: 96px;
+  --space-10: 128px;
+
+  /* Shape */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+
+  /* Effects */
+  --shadow-soft: 0 24px 80px rgba(0, 0, 0, 0.28);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 180ms;
+  --duration-base: 280ms;
+  --duration-slow: 500ms;
+}

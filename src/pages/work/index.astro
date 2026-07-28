@@ -1,0 +1,153 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { site } from '../../data/site';
+
+const projects = (await getCollection('projects')).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+
+const projectCards = projects.map((project) => ({
+  category: project.data.category,
+  title: project.data.title,
+  summary: project.data.summary,
+  technologies: project.data.technologies,
+  href: `/work/${project.id}`,
+}));
+---
+
+<BaseLayout
+  title={`Work — ${site.name}`}
+  description="Portfolio of projects — artifacts, architectures, and algorithms."
+>
+  <section class="page container-site">
+    <header class="page__header">
+      <p class="label-mono">Work</p>
+      <h1 class="page__title">Portfolio of Projects</h1>
+      <p class="page__desc">Artifacts · Architectures · Algorithms</p>
+    </header>
+
+    <div class="project-list">
+      {
+        projectCards.map((project) => (
+          <article class="row reveal">
+            <a class="row__link" href={project.href}>
+              <div class="row__meta">
+                <span class="label-mono">{project.category}</span>
+              </div>
+              <div class="row__body">
+                <h2 class="row__title">{project.title}</h2>
+                <p class="row__summary">{project.summary}</p>
+                {project.technologies.length > 0 && (
+                  <p class="row__themes">{project.technologies.slice(0, 4).join('  /  ')}</p>
+                )}
+              </div>
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page {
+    padding-block: var(--space-7) var(--space-9);
+  }
+
+  .page__header {
+    max-width: 36rem;
+    margin-bottom: var(--space-7);
+  }
+
+  .page__header .label-mono {
+    margin-bottom: var(--space-3);
+  }
+
+  .page__title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3.5vw, 2.75rem);
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  .page__desc {
+    margin: var(--space-3) 0 0;
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    letter-spacing: 0.06em;
+    color: var(--color-text-secondary);
+  }
+
+  .project-list {
+    display: grid;
+  }
+
+  .row {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .row:last-child {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .row__link {
+    display: grid;
+    gap: var(--space-3);
+    padding-block: var(--space-5);
+    padding-inline: var(--space-1);
+    transition: background var(--duration-base) var(--ease-out);
+  }
+
+  .row__link:hover {
+    background: color-mix(in srgb, var(--color-surface) 85%, transparent);
+  }
+
+  .row__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+
+  .row__title {
+    margin: 0 0 var(--space-2);
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+    font-weight: 500;
+    line-height: 1.15;
+    color: var(--color-text-primary);
+  }
+
+  .row__summary {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--text-small);
+    line-height: 1.65;
+    max-width: 62ch;
+  }
+
+  .row__themes {
+    margin: var(--space-3) 0 0;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    color: var(--color-text-muted);
+  }
+
+  @media (min-width: 768px) {
+    .row__link {
+      grid-template-columns: 10rem minmax(0, 1fr);
+      gap: var(--space-7);
+      align-items: start;
+      padding-block: var(--space-6);
+    }
+
+    .row__meta {
+      flex-direction: column;
+      gap: var(--space-2);
+      padding-top: 0.3rem;
+    }
+  }
+</style>

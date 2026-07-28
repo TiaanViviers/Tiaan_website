@@ -1,0 +1,36 @@
+---
+interface Props {
+  quote: string;
+  attribution?: string;
+}
+
+const { quote, attribution } = Astro.props;
+---
+
+<blockquote class="editorial-quote reveal">
+  <p>{quote}</p>
+  {attribution && <footer class="label-mono">{attribution}</footer>}
+</blockquote>
+
+<style>
+  .editorial-quote {
+    margin: 0;
+    padding: var(--space-7) 0;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .editorial-quote p {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    line-height: 1.15;
+    color: var(--color-text-primary);
+    letter-spacing: -0.02em;
+    max-width: 18ch;
+  }
+
+  .editorial-quote footer {
+    margin-top: var(--space-5);
+  }
+</style>
