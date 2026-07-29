@@ -50,10 +50,7 @@ const pathname = Astro.url.pathname;
         {
           site.nav.map((item) => (
             <li>
-              <a href={item.href}>
-                <span class="label-mono">{item.number}</span>
-                <span>{item.label}</span>
-              </a>
+              <a href={item.href}>{item.label}</a>
             </li>
           ))
         }
