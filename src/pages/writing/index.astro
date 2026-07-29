@@ -13,26 +13,14 @@ const entries = (await getCollection('writing')).sort(
   title={`Writing — ${site.name}`}
   description="A record of stochastic thoughts — postulations, discourses, and working hypotheses."
 >
-  <section class="writing-page">
-    <section class="writing-hero" aria-label="Writing">
-      <img
-        class="writing-hero__image img-mono"
-        src="/images/atmosphere/beach-mountains.png"
-        alt=""
-        width="1536"
-        height="1248"
-        loading="eager"
-        decoding="async"
-      />
-      <div class="writing-hero__overlay" aria-hidden="true"></div>
-      <div class="writing-hero__content container-site">
-        <p class="label-mono">Writing</p>
-        <h1 class="writing-hero__title">A record of stochastic thoughts</h1>
-        <p class="writing-hero__slogan">Postulations · Discourses · Working Hypotheses</p>
-      </div>
-    </section>
+  <section class="writing-page container-site">
+    <header class="writing-header">
+      <p class="label-mono">Writing</p>
+      <h1 class="writing-header__title">A record of stochastic thoughts</h1>
+      <p class="writing-header__slogan">Postulations · Discourses · Working Hypotheses</p>
+    </header>
 
-    <div class="writing-list container-site">
+    <div class="writing-list">
       {
         entries.map((entry) => (
           <ArticleCard
@@ -54,66 +42,29 @@ const entries = (await getCollection('writing')).sort(
 
 <style>
   .writing-page {
-    padding-bottom: var(--space-9);
+    padding-block: var(--space-6) var(--space-9);
   }
 
-  .writing-hero {
-    position: relative;
-    min-height: clamp(380px, 43vw, 520px);
-    overflow: hidden;
-    display: flex;
-    align-items: flex-end;
-    margin-bottom: var(--space-6);
+  .writing-header {
+    max-width: 40rem;
+    margin-bottom: var(--space-7);
   }
 
-  .writing-hero__image {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
-    object-position: 50% 66%;
-  }
-
-  .writing-hero__overlay {
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(
-        90deg,
-        rgba(8, 9, 11, 0.88) 0%,
-        rgba(8, 9, 11, 0.58) 48%,
-        rgba(8, 9, 11, 0.28) 100%
-      ),
-      linear-gradient(0deg, rgba(8, 9, 11, 0.48), transparent 55%);
-    pointer-events: none;
-  }
-
-  .writing-hero__content {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    padding-block: var(--space-6);
-    text-align: left;
-  }
-
-  .writing-hero__content .label-mono {
+  .writing-header .label-mono {
     margin-bottom: var(--space-3);
   }
 
-  .writing-hero__title {
+  .writing-header__title {
     margin: 0;
-    max-width: 18ch;
     font-family: var(--font-display);
-    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 500;
     line-height: 1.05;
     letter-spacing: -0.025em;
     color: var(--color-text-primary);
   }
 
-  .writing-hero__slogan {
+  .writing-header__slogan {
     margin: var(--space-3) 0 0;
     font-family: var(--font-mono);
     font-size: var(--text-label);
@@ -123,15 +74,5 @@ const entries = (await getCollection('writing')).sort(
 
   .writing-list {
     max-width: var(--container-max);
-  }
-
-  @media (max-width: 760px) {
-    .writing-hero {
-      min-height: clamp(300px, 70vw, 420px);
-    }
-
-    .writing-hero__image {
-      object-position: 32% 62%;
-    }
   }
 </style>

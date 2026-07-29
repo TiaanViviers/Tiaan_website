@@ -1,7 +1,7 @@
 ---
 interface Props {
-  eyebrow: string;
   title: string;
+  quote: string;
   body: string;
   image: string;
   imageAlt: string;
@@ -10,8 +10,8 @@ interface Props {
 }
 
 const {
-  eyebrow,
   title,
+  quote,
   body,
   image,
   imageAlt,
@@ -29,9 +29,9 @@ const {
     <img class="img-mono" src={image} alt={imageAlt} loading="lazy" decoding="async" />
   </div>
   <div class="identity-copy">
-    <p class="eyebrow label-mono">{eyebrow}</p>
     <h2>{title}</h2>
-    <p>{body}</p>
+    <blockquote class="identity-quote">{quote}</blockquote>
+    <p class="identity-body">{body}</p>
   </div>
 </section>
 
@@ -74,11 +74,7 @@ const {
   }
 
   .identity-copy {
-    max-width: 28rem;
-  }
-
-  .identity-copy .eyebrow {
-    margin: 0 0 var(--space-4);
+    max-width: 30rem;
   }
 
   .identity-copy h2 {
@@ -91,10 +87,29 @@ const {
     color: var(--color-text-primary);
   }
 
-  .identity-copy p:last-child {
+  .identity-quote {
+    margin: var(--space-4) 0 0;
+    padding: 0;
+    border: 0;
+    font-family: var(--font-display);
+    font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.45;
+    letter-spacing: -0.01em;
+    color: var(--color-text-muted);
+  }
+
+  .identity-quote :global(*) {
+    font-style: italic;
+  }
+
+  .identity-body {
     margin: var(--space-4) 0 0;
     color: var(--color-text-secondary);
+    font-family: var(--font-body);
     font-size: var(--text-body-lg);
+    font-style: normal;
     line-height: 1.7;
   }
 

@@ -3,13 +3,13 @@ export const site = {
   shortName: 'Tiaan Viviers',
   title: 'Tiaan Viviers — Data Science & Machine Learning',
   description:
-    'Data scientist and engineer building systems that survive contact with reality. Drawn to uncertain problems, rigorous experimentation, and turning models into tools people can actually use.',
+    'Data scientist and engineer building systems to survive contact with reality. Drawn to complex problems, deceptively simple solutions, and working with brilliant people.',
   url: 'https://tiaanviviers.com',
   email: 'tiaanviv@gmail.com',
   role: 'Data Science Student · Stellenbosch University',
-  tagline: 'Building systems that survive contact with reality.',
+  tagline: 'Building systems to survive contact with reality.',
   positioning:
-    'I’m Tiaan Viviers, a data scientist and engineer drawn to uncertain problems, rigorous experimentation, and turning models into tools people can actually use.',
+    'I’m Tiaan Viviers, a data scientist and engineer drawn to complex problems, deceptively simple solutions, and working with brilliant people.',
   location: 'Stellenbosch, South Africa',
   social: {
     github: 'https://github.com/TiaanViviers',

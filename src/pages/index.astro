@@ -5,27 +5,28 @@ import IdentityPanel from '../components/IdentityPanel.astro';
 
 const identities = [
   {
-    eyebrow: '01 / Curiosity',
-    title: 'I am curious.',
-    body: 'Curiosity is how I decide which problems deserve rigour. I follow questions into astronomy, statistics, and systems that only make sense once you stay with them long enough.',
+    title: 'Curious.',
+    quote: '"I have no special talents. I am only passionately curious." — Albert Einstein',
+    body: 'Curiosity is the engine behind everything I learn. It is the reason my interests span across all parts of data and software. If you give me an interesting question, I will chase it until I find the bedrock.',
     image: '/images/atmosphere/astronomy.png',
     imageAlt: 'Night sky and astronomy equipment under stars',
     imagePosition: '50% 38%',
     reverse: false,
   },
   {
-    eyebrow: '02 / Risk',
-    title: 'I take calculated risks.',
-    body: 'Progress asks for leaps, not guesses. I care about quantifying uncertainty, naming the downside, and still choosing the move when the expected value is clear.',
+    title: 'Accountable.',
+    quote: '"The price of greatness is responsibility." — Winston Churchill',
+    body: 'Accountability means running toward the fires, not away from them. Whether I am leading a project or supporting a teammate, my goal is to create stability where there is chaos and to always finish what I start.',
     image: '/images/atmosphere/cliff-jump.png',
     imageAlt: 'Person jumping across a mountain gap',
     imagePosition: '50% 28%',
     reverse: true,
   },
   {
-    eyebrow: '03 / Grit',
-    title: 'I stay with the work.',
-    body: 'Dedication is the quiet half of ambition. Hard problems rarely yield on the first pass — perseverance is how models become tools, and tools become systems.',
+    title: 'Persistent.',
+    quote:
+      '"I don\'t think you can overstate the amount of discipline and pain tolerance required to build something that lasts." — Jensen Huang',
+    body: 'I do not expect rewarding work to feel easy. Anyone can get excited about a brand-new idea, but the real work happens when you hit a brick wall. That is where I find my stride, in the quiet, unglamorous grind.',
     image: '/images/atmosphere/mountain-explore.png',
     imageAlt: 'Hiker walking a misty mountain path',
     imagePosition: '50% 42%',
@@ -46,8 +47,8 @@ const identities = [
       {
         identities.map((item) => (
           <IdentityPanel
-            eyebrow={item.eyebrow}
             title={item.title}
+            quote={item.quote}
             body={item.body}
             image={item.image}
             imageAlt={item.imageAlt}
@@ -107,3 +108,30 @@ const identities = [
     padding-bottom: var(--space-8);
   }
 </style>
+
+<style is:global>
+  /* Quiet header over the full-bleed hero; solidifies after scroll */
+  body:has(.home) .site-header {
+    background: transparent;
+    border-bottom-color: transparent;
+    backdrop-filter: none;
+  }
+
+  body:has(.home) .site-header.is-solid {
+    background: color-mix(in srgb, var(--color-bg) 86%, transparent);
+    border-bottom-color: var(--color-border);
+    backdrop-filter: blur(12px);
+  }
+</style>
+
+<script>
+  const header = document.querySelector('.site-header');
+  const hero = document.querySelector('.hero');
+  if (header instanceof HTMLElement && hero instanceof HTMLElement) {
+    const sync = () => {
+      header.classList.toggle('is-solid', window.scrollY > hero.offsetHeight - 64);
+    };
+    sync();
+    window.addEventListener('scroll', sync, { passive: true });
+  }
+</script>
