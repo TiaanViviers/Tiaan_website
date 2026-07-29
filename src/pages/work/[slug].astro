@@ -119,6 +119,15 @@ const { title, summary, year, category, technologies, links } = project.data;
     line-height: 1.2;
   }
 
+  .case-study__prose :global(h3) {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-3);
+    line-height: 1.25;
+    color: var(--color-text-primary);
+  }
+
   .case-study__prose :global(p),
   .case-study__prose :global(ul),
   .case-study__prose :global(ol) {
@@ -128,13 +137,94 @@ const { title, summary, year, category, technologies, links } = project.data;
     line-height: 1.7;
   }
 
+  .case-study__prose :global(ul),
+  .case-study__prose :global(ol) {
+    padding-left: 1.25rem;
+  }
+
+  .case-study__prose :global(ul) {
+    list-style-type: disc;
+  }
+
+  .case-study__prose :global(ol) {
+    list-style-type: decimal;
+  }
+
   .case-study__prose :global(li) {
     margin-bottom: var(--space-2);
+    padding-left: 0.15rem;
+  }
+
+  .case-study__prose :global(li::marker) {
+    color: var(--color-text-muted);
   }
 
   .case-study__prose :global(strong) {
     color: var(--color-text-primary);
     font-weight: 500;
+  }
+
+  .case-study__prose :global(blockquote) {
+    margin: var(--space-5) 0;
+    padding-left: var(--space-4);
+    border-left: 1px solid var(--color-border-strong);
+    color: var(--color-text-primary);
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    line-height: 1.4;
+  }
+
+  .case-study__prose :global(code) {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    color: var(--color-text-primary);
+    background: var(--color-surface);
+    padding: 0.1em 0.35em;
+    border-radius: var(--radius-sm);
+  }
+
+  .case-study__prose :global(table) {
+    width: 100%;
+    margin: var(--space-5) 0 var(--space-6);
+    border-collapse: collapse;
+    font-size: var(--text-small);
+  }
+
+  .case-study__prose :global(th),
+  .case-study__prose :global(td) {
+    padding: 0.65rem 0.75rem;
+    border-bottom: 1px solid var(--color-border);
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .case-study__prose :global(th) {
+    color: var(--color-text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .case-study__prose :global(td) {
+    color: var(--color-text-secondary);
+  }
+
+  .case-study__prose :global(th:not(:first-child)),
+  .case-study__prose :global(td:not(:first-child)) {
+    text-align: right;
+  }
+
+  .case-study__prose :global(.katex) {
+    color: var(--color-text-primary);
+    font-size: 1.05em;
+  }
+
+  .case-study__prose :global(.katex-display) {
+    margin: var(--space-5) 0;
+    overflow-x: auto;
+    overflow-y: hidden;
   }
 
   .case-study__back {

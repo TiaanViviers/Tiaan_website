@@ -5,8 +5,6 @@ year: 2025
 category: Statistical Computing
 featured: true
 order: 1
-image: /images/projects/bocpd-cover.png
-imagePosition: center 30%
 technologies:
   - Python
   - Bayesian Inference

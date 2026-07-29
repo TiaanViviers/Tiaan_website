@@ -10,7 +10,7 @@ const projects = defineCollection({
     category: z.string(),
     featured: z.boolean().default(false),
     order: z.number().default(99),
-    image: z.string(),
+    image: z.string().optional(),
     imagePosition: z.string().optional(),
     technologies: z.array(z.string()).default([]),
     links: z
