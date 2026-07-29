@@ -5,52 +5,76 @@ import { site } from '../data/site';
 
 <BaseLayout
   title={`About — ${site.name}`}
-  description="Data Science student at Stellenbosch University exploring statistical computing, machine learning, and applied research."
+  description="Data Science student at Stellenbosch University — interested where statistics becomes a model inside a real system, solving a real problem."
 >
   <section class="about container-site">
-    <header class="about__header">
-      <p class="label-mono">About</p>
-      <h1 class="about__title">{site.name}</h1>
-      <p class="about__lede">
-        Data Science student at Stellenbosch University. Building toward a career as a data
-        scientist or machine learning engineer — serious about methods, systems, and clear
-        explanation.
-      </p>
-    </header>
-
     <div class="about__grid">
-      <div class="about__photo">
-        <div class="about__frame">
+      <div class="about__left">
+        <header class="about__header">
+          <p class="label-mono">About</p>
+          <h1 class="about__title">{site.name}</h1>
+          <p class="about__lede">
+            I’m interested in the point where statistics stops being 
+            theory and has to become something useful; a model inside a real
+            system, solving a real problem for someone.
+          </p>
+        </header>
+
+        <figure class="about__photo">
           <img
             class="img-mono"
-            src="/images/atmosphere/beach-mountains.png"
-            alt="Tiaan Viviers on the beach with mountains behind"
-            width="1536"
-            height="1248"
+            src="/images/hero-portrait.jpg"
+            alt="Tiaan Viviers in a suit at a chessboard"
+            width="1277"
+            height="1536"
             loading="eager"
             decoding="async"
           />
-        </div>
+        </figure>
       </div>
 
       <div class="about__copy">
-        <h2>Positioning</h2>
+        <h2>My Passion</h2>
         <p>
-          I work where statistics meets software: online inference, probabilistic algorithms, and
-          machine learning systems that have to remain interpretable under constraint.
+          I get energised by unusual problems that make you stop and think. My best work happens in
+          a team where curiosity and ambition feed off one another: ideas are challenged, people
+          become invested, and there is that shared moment when a solution finally starts coming
+          together.
         </p>
         <p>
-          Outside the screen I look for the same qualities the work demands — patience, attention,
-          and a willingness to stay with difficult terrain. Astronomy, hiking, and long outdoor days
-          are part of how I reset and think.
+          I value the mathematics, statistics, and careful reasoning behind data science, but I
+          naturally lean toward the engineering side of the field. I do not want the work to end in
+          a notebook. I enjoy turning an idea into a complete system or product: designing the
+          pipeline around it, making the trade-offs explicit, testing whether it holds up, and
+          building something people can use.
+        </p>
+
+        <h2>Outside the work</h2>
+        <p>
+          Away from the screen, I spend a lot of time in the gym and looking for reasons to get
+          outdoors, whether that means mountains, the ocean, or something slightly outside my
+          comfort zone.
+        </p>
+        <p>
+          The gym gives me somewhere to reset, work through pressure, and maintain the discipline
+          and healthy routine that support everything else I do. Time outdoors serves a different
+          purpose: it creates space to think, slows things down, and reminds me that not every
+          worthwhile challenge happens behind a desk.
         </p>
 
         <h2>Currently</h2>
-        <ul>
-          <li>Studying Data Science at Stellenbosch University</li>
-          <li>Building projects in changepoint detection, particle filters, and ensemble inference</li>
-          <li>Open to internships, research placements, and bursary programmes</li>
-        </ul>
+        <p>
+          Studying Data Science at Stellenbosch University and completing my 4 year undergraduate
+          degree (NQF level 8).
+        </p>
+        <p>
+          Building research and software projects around tokenisation, online inference,
+          probabilistic algorithms, and applied machine learning.
+        </p>
+        <p>
+          Looking for bursaries, internships, research opportunities, and eventually a role where I
+          can take real ownership of difficult technical problems.
+        </p>
       </div>
     </div>
   </section>
@@ -58,12 +82,19 @@ import { site } from '../data/site';
 
 <style>
   .about {
-    padding-block: var(--space-4) var(--space-6);
+    padding-block: var(--space-5) var(--space-7);
   }
 
-  .about__header {
-    max-width: 36rem;
-    margin-bottom: var(--space-5);
+  .about__grid {
+    display: grid;
+    gap: var(--space-7);
+    align-items: start;
+  }
+
+  .about__left {
+    display: grid;
+    gap: var(--space-5);
+    align-content: start;
   }
 
   .about__header .label-mono {
@@ -80,73 +111,57 @@ import { site } from '../data/site';
   }
 
   .about__lede {
-    margin: var(--space-3) 0 0;
+    margin: var(--space-4) 0 0;
     color: var(--color-text-secondary);
     font-size: var(--text-small);
-    line-height: 1.65;
+    line-height: 1.7;
   }
 
-  .about__grid {
-    display: grid;
-    gap: var(--space-5);
-    align-items: start;
-  }
-
-  .about__frame {
-    overflow: hidden;
+  .about__photo {
+    margin: 0;
     border-radius: var(--radius-md);
     border: 1px solid var(--color-border);
-    aspect-ratio: 5 / 4;
+    overflow: hidden;
     background: var(--color-surface);
+    line-height: 0;
   }
 
-  .about__frame img {
+  /* Full photograph — natural proportions, no cover-crop */
+  .about__photo img {
     width: 100%;
-    height: 100%;
+    height: auto;
     display: block;
-    object-fit: cover;
-    object-position: 35% 55%;
   }
 
   .about__copy {
     display: grid;
-    gap: var(--space-3);
+    gap: var(--space-4);
     align-content: start;
   }
 
   .about__copy h2 {
-    margin: var(--space-2) 0 0;
+    margin: var(--space-3) 0 0;
     font-family: var(--font-display);
-    font-size: 1.15rem;
+    font-size: 1.25rem;
     font-weight: 500;
     line-height: 1.2;
   }
 
-  .about__copy p,
-  .about__copy li {
+  .about__copy h2:first-child {
+    margin-top: 0;
+  }
+
+  .about__copy p {
     margin: 0;
     color: var(--color-text-secondary);
     font-size: var(--text-small);
-    line-height: 1.65;
+    line-height: 1.7;
   }
 
-  .about__copy ul {
-    margin: 0;
-    padding-left: 1.05rem;
-    display: grid;
-    gap: var(--space-1);
-  }
-
-  @media (min-width: 800px) {
+  @media (min-width: 900px) {
     .about__grid {
-      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.9fr);
-      gap: var(--space-7);
-      align-items: center;
-    }
-
-    .about__frame {
-      aspect-ratio: 4 / 3;
-      max-height: 420px;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+      gap: var(--space-8);
     }
   }
 </style>
