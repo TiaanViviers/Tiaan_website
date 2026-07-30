@@ -7,7 +7,7 @@ export const site = {
   url: 'https://tiaanviviers.com',
   email: 'tiaanviv@gmail.com',
   role: 'Data Science Student · Stellenbosch University',
-  tagline: 'Building systems to survive contact with reality.',
+  tagline: '',
   positioning:
     'I’m Tiaan Viviers, a data scientist and engineer drawn to complex problems, deceptively simple solutions, and working with brilliant people.',
   location: 'Stellenbosch, South Africa',

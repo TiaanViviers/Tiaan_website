@@ -29,11 +29,26 @@ const { title, summary, year, category, technologies, links } = project.data;
         )
       }
       {
-        links && (links.repository || links.report || links.demo) && (
+        links &&
+          (links.repository ||
+            links.report ||
+            links.demo ||
+            links.package ||
+            links.documentation) && (
           <div class="case-study__links">
             {links.repository && (
               <a href={links.repository} rel="noopener noreferrer" target="_blank">
                 Repository
+              </a>
+            )}
+            {links.package && (
+              <a href={links.package} rel="noopener noreferrer" target="_blank">
+                PyPI
+              </a>
+            )}
+            {links.documentation && (
+              <a href={links.documentation} rel="noopener noreferrer" target="_blank">
+                Documentation
               </a>
             )}
             {links.report && <a href={links.report}>Report</a>}

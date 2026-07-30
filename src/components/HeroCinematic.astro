@@ -25,6 +25,11 @@ import { site } from '../data/site';
       <h1 class="hero__title">{site.tagline}</h1>
       <p class="hero__body">{site.positioning}</p>
     </div>
+
+    <a class="hero__teaser" href="#identity" aria-label="Scroll to identity">
+      <span class="hero__teaser-text">I am…</span>
+      <span class="hero__teaser-hint" aria-hidden="true"></span>
+    </a>
   </div>
 </section>
 
@@ -34,7 +39,7 @@ import { site } from '../data/site';
     isolation: isolate;
     overflow: hidden;
     display: flex;
-    align-items: flex-end;
+    align-items: stretch;
     /* First screen under the sticky header */
     min-height: calc(100svh - 64px);
     height: calc(100svh - 64px);
@@ -55,7 +60,7 @@ import { site } from '../data/site';
     object-position: 58% 18%;
   }
 
-  /* Strong left/bottom wash so off-white type stays readable on the photo */
+  /* Strong left/top wash so off-white type stays readable on the photo */
   .hero__overlay {
     position: absolute;
     inset: 0;
@@ -70,9 +75,10 @@ import { site } from '../data/site';
       ),
       linear-gradient(
         180deg,
-        rgba(8, 9, 11, 0.28) 0%,
-        rgba(8, 9, 11, 0.08) 35%,
-        rgba(8, 9, 11, 0.72) 100%
+        rgba(8, 9, 11, 0.72) 0%,
+        rgba(8, 9, 11, 0.18) 42%,
+        rgba(8, 9, 11, 0.08) 68%,
+        rgba(8, 9, 11, 0.55) 100%
       );
   }
 
@@ -80,11 +86,15 @@ import { site } from '../data/site';
     position: relative;
     z-index: 1;
     width: 100%;
-    padding-block: clamp(2rem, 6vh, 4rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-block: clamp(2rem, 6vh, 4rem) clamp(1.75rem, 4vh, 3rem);
   }
 
   .hero__copy {
     max-width: 34rem;
+    padding-top: clamp(0.5rem, 2vh, 1.25rem);
   }
 
   .hero__copy .label-mono {
@@ -112,6 +122,52 @@ import { site } from '../data/site';
     text-shadow: 0 1px 18px rgba(0, 0, 0, 0.3);
   }
 
+  .hero__teaser {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: fit-content;
+    text-decoration: none;
+    color: rgba(242, 242, 242, 0.88);
+    transition: color 200ms ease, opacity 200ms ease;
+  }
+
+  .hero__teaser:hover,
+  .hero__teaser:focus-visible {
+    color: #f2f2f2;
+  }
+
+  .hero__teaser-text {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3.2vw, 2.25rem);
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    text-shadow: 0 1px 18px rgba(0, 0, 0, 0.35);
+  }
+
+  .hero__teaser-hint {
+    width: 0.65rem;
+    height: 0.65rem;
+    border-right: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor;
+    transform: rotate(45deg) translateY(-2px);
+    opacity: 0.7;
+    animation: teaser-bob 1.8s ease-in-out infinite;
+  }
+
+  @keyframes teaser-bob {
+    0%,
+    100% {
+      transform: rotate(45deg) translateY(-3px);
+      opacity: 0.45;
+    }
+    50% {
+      transform: rotate(45deg) translateY(2px);
+      opacity: 0.9;
+    }
+  }
+
   @media (max-width: 1100px) {
     .hero__media img {
       object-position: 55% 14%;
@@ -122,7 +178,6 @@ import { site } from '../data/site';
     .hero {
       min-height: calc(100svh - 64px);
       height: calc(100svh - 64px);
-      align-items: flex-end;
     }
 
     .hero__media img {
@@ -133,9 +188,10 @@ import { site } from '../data/site';
       background:
         linear-gradient(
           180deg,
-          rgba(8, 9, 11, 0.35) 0%,
-          rgba(8, 9, 11, 0.2) 40%,
-          rgba(8, 9, 11, 0.88) 100%
+          rgba(8, 9, 11, 0.78) 0%,
+          rgba(8, 9, 11, 0.28) 38%,
+          rgba(8, 9, 11, 0.2) 70%,
+          rgba(8, 9, 11, 0.72) 100%
         ),
         linear-gradient(
           90deg,
@@ -146,6 +202,12 @@ import { site } from '../data/site';
 
     .hero__copy {
       max-width: 100%;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero__teaser-hint {
+      animation: none;
     }
   }
 </style>

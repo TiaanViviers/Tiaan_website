@@ -82,11 +82,10 @@ The feature pipeline combined historical sales behaviour with lagged, rolling an
 
 A location was not flagged merely because revenue was expected to fall.
 
-Instead, its forecast was compared with that location’s own historical out-of-sample forecast distribution. Month-conditioned history was preferred when enough prior weeks existed; otherwise the system fell back to a broader store-level baseline, or skipped the location for that week.
+Instead, its forecast was compared with that location’s own historical out-of-sample forecast distribution. Month-conditioned history was preferred when enough prior weeks existed; otherwise the system fell back to a broader store-level baseline.
 
 This allowed the system to identify cases where performance might still be positive in absolute terms, but materially weaker than what would normally be expected for that location and time of year.
-
-Signals were scored with a gap relative to expectation, calibrated into severity bands and persisted as immutable records. Undecided recommendations from earlier cycles could expire when a new weekly scan replaced them, so the review queue stayed current rather than accumulating stale suggestions.
+Signals were scored with a gap relative to expectation, calibrated into severity bands and persisted as immutable records.
 
 ### Context
 
@@ -136,8 +135,6 @@ A single revenue model was simpler, but weaker for diagnosis. Decomposing traffi
 Fully autonomous launching was rejected early. Brand managers needed agency over what went out, even when the recommendation was strong.
 
 Changing voucher value on every trial would have expanded the search space, but also blurred what the system was learning. Keeping the offer fixed concentrated learning on audience selection.
-
-Aggressive demo thresholds were also treated carefully. Denser signal coverage could be useful for product demos, but baking those knobs into default model behaviour would have distorted the operating logic. Configuration belonged outside the core rule set.
 
 ## My role
 
@@ -202,8 +199,7 @@ The system remained a proof of concept.
 Campaign generation was batch-driven rather than fully scheduled, approval did not trigger real customer communication, and the simulation service acted as a black box for campaign response.
 
 The quality of the recommendations also depended on forecast calibration, signal thresholds and the assumptions encoded in the available audience strategies.
-
-All references to the organisation and restaurant group have been intentionally anonymised.
+.
 
 ## Lessons learned
 

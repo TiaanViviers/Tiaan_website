@@ -39,11 +39,7 @@ const identities = [
   <div class="home">
     <HeroCinematic />
 
-    <section class="identity-intro container-site" aria-label="Identity">
-      <p class="identity-intro__text">I am…</p>
-    </section>
-
-    <div class="identity-sequence container-site">
+    <div id="identity" class="identity-sequence container-site">
       {
         identities.map((item) => (
           <IdentityPanel
@@ -90,22 +86,10 @@ const identities = [
 </script>
 
 <style>
-  .identity-intro {
-    padding-block: clamp(3.5rem, 8vh, 6rem) clamp(1rem, 3vh, 2rem);
-  }
-
-  .identity-intro__text {
-    margin: 0;
-    font-family: var(--font-display);
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-    font-weight: 500;
-    line-height: 1;
-    letter-spacing: -0.03em;
-    color: var(--color-text-primary);
-  }
-
   .identity-sequence {
+    padding-top: clamp(2rem, 5vh, 4rem);
     padding-bottom: var(--space-8);
+    scroll-margin-top: 5rem;
   }
 </style>
 

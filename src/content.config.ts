@@ -18,6 +18,8 @@ const projects = defineCollection({
         repository: z.string().optional(),
         report: z.string().optional(),
         demo: z.string().optional(),
+        package: z.string().optional(),
+        documentation: z.string().optional(),
       })
       .optional(),
   }),
