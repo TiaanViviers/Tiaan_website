@@ -96,6 +96,12 @@ I still find some of this slightly counterintuitive. Part of me naturally wants 
 
 # What Changed
 
+There is a particular kind of embarrassment that comes from looking back at the person you were before a period of rapid growth. It is the feeling of suddenly noticing how confidently you believed things that now seem incomplete, naive or simply wrong. I have started to feel some of that embarrassment when I think about the expectations I carried into the internship.
 
+The programme was difficult. The technical challenge was significant, but the mental side was often harder. There were many days when I came home exhausted and somehow disoriented. At the time, those days mostly felt like defeat.
 
+Now that some time has passed, I think the discomfort came from something more useful. Many of the assumptions I had about technical work, professional competence and even my own strengths were being challenged almost every day. Ideas I had carried for years were being tested against a real environment, and some of them did not survive. That process is rarely comfortable. It is much easier to feel capable when you remain inside problems that confirm what you already know. Growth often begins when your existing way of understanding the world stops being sufficient.
 
+Three weeks was not enough to make me a complete professional, and I do not want to pretend that it was. What it gave me was a clearer view of the professional I would like to become, as well as a much more honest understanding of the distance still left to travel.
+
+I arrived wanting to prove that I could build something. I left thinking much more carefully about how to decide what to build, how to build it with other people, and what it means to take responsibility for the result.
