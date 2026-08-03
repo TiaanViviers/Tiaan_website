@@ -2,12 +2,14 @@
 
 Monochrome Noir cinematic personal site built with Astro.
 
+Live site: https://tiaan-website.tiaanviv.workers.dev
+
 ## Stack
 
 - Astro + TypeScript
 - Tailwind CSS v4
 - Content Collections (Markdown/MDX)
-- Static output for Cloudflare Pages
+- Static output for Cloudflare Workers
 
 ## Develop
 
@@ -25,11 +27,12 @@ npm run preview
 
 Output lands in `dist/`.
 
-## Cloudflare Pages
+## Cloudflare Workers
 
 - Build command: `npm run build`
+- Deploy command: `npx wrangler deploy`
 - Output directory: `dist`
-- Node version: `22` or newer
+- Node version: `22.12.0` or newer
 
 Connect the GitHub repository and enable production deploys from `main`, with preview deployments for pull requests.
 

@@ -4,7 +4,7 @@ export const site = {
   title: 'Tiaan Viviers: Data Science & Machine Learning',
   description:
     'Aspiring data scientist and ML engineer building systems to survive contact with reality. Drawn to complex problems, deceptively simple solutions, and working with brilliant people.',
-  url: 'https://tiaanviviers.com',
+  url: 'https://tiaan-website.tiaanviv.workers.dev',
   email: 'tiaanviv@gmail.com',
   role: 'Data Science Student · Stellenbosch University',
   positioning:

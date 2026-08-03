@@ -10,7 +10,7 @@ import remarkGfm from 'remark-gfm';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://tiaanviviers.com',
+  site: 'https://tiaan-website.tiaanviv.workers.dev',
   integrations: [mdx(), sitemap()],
   markdown: {
     processor: unified({
