@@ -1,15 +1,14 @@
 export const site = {
   name: 'Tiaan Viviers',
   shortName: 'Tiaan Viviers',
-  title: 'Tiaan Viviers — Data Science & Machine Learning',
+  title: 'Tiaan Viviers: Data Science & Machine Learning',
   description:
-    'Data scientist and engineer building systems to survive contact with reality. Drawn to complex problems, deceptively simple solutions, and working with brilliant people.',
+    'Aspiring data scientist and ML engineer building systems to survive contact with reality. Drawn to complex problems, deceptively simple solutions, and working with brilliant people.',
   url: 'https://tiaanviviers.com',
   email: 'tiaanviv@gmail.com',
   role: 'Data Science Student · Stellenbosch University',
-  tagline: '',
   positioning:
-    'I’m Tiaan Viviers, a data scientist and engineer drawn to complex problems, deceptively simple solutions, and working with brilliant people.',
+    'I’m Tiaan Viviers, an aspiring Data Scientist and Machine Learning Engineer drawn to complex problems, deceptively simple solutions, and working with brilliant people.',
   location: 'Stellenbosch, South Africa',
   social: {
     github: 'https://github.com/TiaanViviers',

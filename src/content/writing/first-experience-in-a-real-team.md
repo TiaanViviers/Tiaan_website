@@ -1,6 +1,6 @@
 ---
 title: My First Experience in a Real Technical Team
-description: 3 Week Internship Programme at StraTech
+description: 3-Week Internship Programme at StraTech
 publishedAt: 2026-07-19
 tags: []
 featured: false
@@ -10,7 +10,7 @@ This journey started when a good friend recommended the StraTech Internship Prog
 
 I applied for the 2026 programme, landed an interview and, shortly afterwards, met the other five students who would be completing the internship alongside me. It quickly became clear that I would be working with a remarkably capable group of people. The product we delivered at the end of the 3 weeks proved this concretely.
 
-# My Expectation Before the program
+# My Expectations Before the Programme
 Since this was my first internship, I was not entirely sure what to expect.
 
 I assumed we would spend most of our time keeping ourselves busy with a somewhat artificial project. It might not be particularly meaningful, but it would at least expose us to professional software teams, unfamiliar tools and enterprise-scale problems.
@@ -56,7 +56,7 @@ For many businesses, AI is becoming a tool that is too expensive not to use. The
 This changes where human value sits within the development lifecycle.
 As implementation becomes faster and cheaper, more of a developer’s value moves towards deciding what should be implemented, how it should work and whether it solves the right problem in the first place. The same applies to nearly every other role involved in building software.
 
-A developer may spend less time producing routine implementation code and more time thinking about architecture, trade-offs and how a feature affects the wider product. A data scientist can build more experiments to test a greater variety of hypothesis, Product teams can produce documentation faster, security teams can automate parts of their analysis, and quality assurance teams can generate and execute more tests with less manual effort.
+A developer may spend less time writing code and more time thinking about architecture, trade-offs and how a feature affects the wider product. A data scientist can build more experiments to test a greater variety of hypotheses. Product teams can produce documentation faster, security teams can automate parts of their analysis, and quality assurance teams can generate and execute more tests with less manual effort.
 
 The result is not that everyone suddenly has less work to do. It is that more people are able (and increasingly expected) to think earlier in the problem cycle.
 
@@ -104,4 +104,4 @@ Now that some time has passed, I think the discomfort came from something more u
 
 Three weeks was not enough to make me a complete professional, and I do not want to pretend that it was. What it gave me was a clearer view of the professional I would like to become, as well as a much more honest understanding of the distance still left to travel.
 
-I arrived wanting to prove that I could build something. I left thinking much more carefully about how to decide what to build, how to build it with other people, and what it means to take responsibility for the result.
+I arrived wanting to prove that I could build something. I left thinking much more carefully about how to decide what to build and how to build it with other people.

@@ -22,8 +22,7 @@ import { site } from '../data/site';
   <div class="hero__content container-site">
     <div class="hero__copy">
       <p class="label-mono">{site.role}</p>
-      <h1 class="hero__title">{site.tagline}</h1>
-      <p class="hero__body">{site.positioning}</p>
+      <h1 class="hero__body">{site.positioning}</h1>
     </div>
 
     <a class="hero__teaser" href="#identity" aria-label="Scroll to identity">
@@ -102,19 +101,10 @@ import { site } from '../data/site';
     color: rgba(242, 242, 242, 0.72);
   }
 
-  .hero__title {
-    margin: 0;
-    font-family: var(--font-display);
-    font-size: clamp(2rem, 4.2vw, 3.5rem);
-    font-weight: 500;
-    line-height: 1.05;
-    letter-spacing: -0.03em;
-    color: #f2f2f2;
-    text-shadow: 0 1px 24px rgba(0, 0, 0, 0.35);
-  }
-
   .hero__body {
     margin: var(--space-5) 0 0;
+    font-family: var(--font-body);
+    font-weight: 400;
     color: rgba(242, 242, 242, 0.82);
     font-size: clamp(0.95rem, 1.25vw, 1.1rem);
     line-height: 1.7;
